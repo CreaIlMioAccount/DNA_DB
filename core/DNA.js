@@ -1,4 +1,11 @@
+const dbConfig = require('../config/database');
+
 class DNA {
+
+    async connect() {
+        console.log('DATABASE CONFIG');
+        console.log(dbConfig);
+    }
 
     async query(sql) {
         console.log('QUERY:', sql);
@@ -24,7 +31,6 @@ class DNA {
         console.log('FIND:', table);
         console.log('FILTERS:', filters);
     }
-
 }
 
 module.exports = new DNA();
