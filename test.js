@@ -1,12 +1,23 @@
-const DNA = require('./core/DNA');
+const pool = require('./services/postgres');
 
-DNA.connect();
+async function test() {
+    try {
 
-DNA.find('clienti', {
-    id: 1
-});
+        const result = await pool.query('SELECT NOW()');
 
-DNA.insert('clienti', {
-    nome: 'Mario Rossi',
-    email: 'mario@email.it'
-});
+        console.log('✅ Connessione PostgreSQL riuscita');
+        console.log(result.rows[0]);
+
+    } catch (error) {
+
+        console.error('❌ Errore PostgreSQL');
+        console.error(error);
+
+    } finally {
+
+        await pool.end();
+
+    }
+}
+
+test();

@@ -1,7 +1,7 @@
 module.exports = {
     host: 'localhost',
     port: 5432,
-    database: 'DNA_DB',
+    database: 'dna_db',
     user: 'dna_user',
-    password: 'password_da_definire'
+    password: 'DNA_DB_2026!'
 };
