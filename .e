@@ -1,0 +1,5 @@
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=dna_db
+DB_USER=dna_user
+DB_PASSWORD=DNA_DB_2026 
