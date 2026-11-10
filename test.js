@@ -1,24 +1,18 @@
-const pool = require('./services/postgres');
+const DNA = require('./core/DNA');
 
 async function test() {
 
-    try {
+    const cliente = await DNA.insert(
+        'clienti',
+        {
+            nome: 'Mario Rossi',
+            email: 'mario@email.it',
+            telefono: '3331234567',
+            azienda: 'Cliente Test'
+        }
+    );
 
-        const result = await pool.query(
-            'SELECT * FROM clienti'
-        );
-
-        console.log(result.rows);
-
-    } catch (error) {
-
-        console.error(error);
-
-    } finally {
-
-        await pool.end();
-
-    }
+    console.log(cliente);
 
 }
 

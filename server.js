@@ -1,4 +1,5 @@
 const express = require('express');
+const DNA = require('./core/DNA');
 
 const app = express();
 
@@ -6,12 +7,28 @@ app.get('/health', (req, res) => {
     res.json({
         status: 'ok',
         service: 'DNA_DB',
-        version: '0.1'
+        version: '0.9'
     });
 });
 
-const PORT = 3000;
+app.get('/api/clienti', async (req, res) => {
 
-app.listen(PORT, () => {
-    console.log(`DNA_DB attivo sulla porta ${PORT}`);
+    try {
+
+        const clienti = await DNA.find('clienti');
+
+        res.json(clienti);
+
+    } catch (error) {
+
+        res.status(500).json({
+            error: error.message
+        });
+
+    }
+
+});
+
+app.listen(3000, () => {
+    console.log('DNA_DB Online');
 });
