@@ -1,16 +1,17 @@
 const pool = require('./services/postgres');
 
 async function test() {
+
     try {
 
-        const result = await pool.query('SELECT NOW()');
+        const result = await pool.query(
+            'SELECT * FROM clienti'
+        );
 
-        console.log('✅ Connessione PostgreSQL riuscita');
-        console.log(result.rows[0]);
+        console.log(result.rows);
 
     } catch (error) {
 
-        console.error('❌ Errore PostgreSQL');
         console.error(error);
 
     } finally {
@@ -18,6 +19,7 @@ async function test() {
         await pool.end();
 
     }
+
 }
 
 test();
