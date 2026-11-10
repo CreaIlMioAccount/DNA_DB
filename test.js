@@ -2,14 +2,9 @@ const DNA = require('./core/DNA');
 
 async function test() {
 
-    const cliente = await DNA.insert(
+    const cliente = await DNA.delete(
         'clienti',
-        {
-            nome: 'Mario Rossi',
-            email: 'mario@email.it',
-            telefono: '3331234567',
-            azienda: 'Cliente Test'
-        }
+        3
     );
 
     console.log(cliente);
