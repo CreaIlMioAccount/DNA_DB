@@ -3,6 +3,8 @@ const DNA = require('./core/DNA');
 
 const app = express();
 
+app.use(express.json());
+
 app.get('/health', (req, res) => {
     res.json({
         status: 'ok',
@@ -18,6 +20,27 @@ app.get('/api/clienti', async (req, res) => {
         const clienti = await DNA.find('clienti');
 
         res.json(clienti);
+
+    } catch (error) {
+
+        res.status(500).json({
+            error: error.message
+        });
+
+    }
+
+});
+
+app.post('/api/clienti', async (req, res) => {
+
+    try {
+
+        const cliente = await DNA.insert(
+            'clienti',
+            req.body
+        );
+
+        res.status(201).json(cliente);
 
     } catch (error) {
 
